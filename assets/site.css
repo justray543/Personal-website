@@ -23,6 +23,7 @@
 
   --gutter: clamp(1.25rem, 5vw, 3.5rem);
   --max: 64rem;
+  --label-col: 8.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -239,7 +240,7 @@ header.page h1 { font-size: clamp(1.9rem, 5vw, 2.9rem); margin-bottom: 0.9rem; m
 /* ── sections ────────────────────────────────────────── */
 section { border-bottom: 1px solid var(--rule); padding: clamp(2.6rem, 6.5vh, 4rem) 0; }
 section:last-of-type { border-bottom: none; }
-.sec { display: grid; grid-template-columns: 8.5rem 1fr; gap: clamp(1.5rem, 5vw, 3.5rem); align-items: start; }
+.sec { display: grid; grid-template-columns: var(--label-col) 1fr; gap: clamp(1.5rem, 5vw, 3.5rem); align-items: start; }
 .sec-label { position: sticky; top: 5.5rem; }
 .sec-label .num { display: block; color: var(--accent); margin-bottom: 0.3rem; }
 .sec--stack { display: block; }
@@ -415,7 +416,7 @@ footer a:hover { color: var(--accent); }
   font-family: var(--mono); font-size: 26px; font-weight: 500; letter-spacing: 0.04em;
   text-transform: uppercase; fill: var(--ink-2); opacity: .75;
   transition: opacity .25s ease, fill .25s ease; pointer-events: none;
-  paint-order: stroke fill; stroke: var(--paper); stroke-width: 7px;
+  paint-order: stroke fill; stroke: var(--paper-2); stroke-width: 7px;
   stroke-linejoin: round;
 }
 .node:hover .node-label, .node.on .node-label { opacity: 1; fill: var(--ink); }
@@ -600,3 +601,26 @@ body.glow-on #glow { opacity: 1; }
 /* both buttons share one treatment — a lone outlined sibling read as unfinished */
 .soc { background: var(--accent); border-color: var(--accent); color: var(--paper); }
 .soc:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--paper); transform: translateY(-2px); }
+
+/* ── large screens ───────────────────────────────────── */
+/* At 64rem the page reads as a narrow column stranded in the middle of a big
+   display. Widen the shell and the label rail together so the proportions
+   hold; body copy keeps its own max-width so line length never suffers. */
+@media (min-width: 1500px) {
+  :root { --max: 74rem; --label-col: 11rem; }
+  section { padding: clamp(3.2rem, 7vh, 4.6rem) 0; }
+  .map-box { max-width: 44rem; }
+}
+@media (min-width: 1800px) {
+  :root { --max: 80rem; --label-col: 12rem; }
+}
+
+/* ── explicit light theme must beat the OS dark media query ──────────── */
+/* Without these, a user on a dark-OS machine who toggles the site to light
+   keeps the dark map treatment, because the media query still matches. */
+:root[data-theme="light"] .dot-land { fill: var(--land); opacity: 1; }
+:root[data-theme="light"] .arc { opacity: .3; }
+:root[data-theme="light"] .node .core,
+:root[data-theme="light"] .node.now .core,
+:root[data-theme="light"] .flyer { filter: none; }
+:root[data-theme="light"] .map-box { background: var(--paper-2); }

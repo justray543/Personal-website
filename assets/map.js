@@ -82,14 +82,14 @@
 
   /* ── the journey ─────────────────────────────────────── */
   var PLACES = [
-    { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24', lside:'left', note:'BBA at National Cheng Kung University. Where it starts.' },
-    { id:'zagreb',    city:'Zagreb',     country:'Croatia',   lon:16.00,  lat:45.80,  yr:'2022',     note:'Exchange semester, University of Zagreb. First time in Europe.' },
-    { id:'taipei',    city:'Taipei',     country:'Taiwan',    lon:121.50, lat:25.00,  yr:'2023–24',  note:'Fidelity International, strategic planning. How a global asset manager actually runs.' },
-    { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'Exchange at Singapore Management University. Asia’s financial centre, up close.' },
-    { id:'melbourne', city:'Melbourne',  country:'Australia', lon:144.96, lat:-37.81, yr:'2025',     note:'Moomoo Australia. 100+ clients across 15+ nationalities, sold face to face.' },
-    { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', note:'Waiwin, payments for travellers. 400 to 5,000 users in three months.' },
-    { id:'berlin',    city:'Berlin',     country:'Germany',   lon:13.40,  lat:52.52,  yr:'2025–now', note:'Finoa, Ultima Markets, ESMT Berlin. Where the thesis gets tested.', now:true },
-    { id:'helsinki',  city:'Helsinki',   country:'Finland',   lon:24.94,  lat:60.17,  yr:'2027',     note:'Aalto University School of Business exchange. Next.', future:true }
+    { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24', lside:'left', note:'BBA, National Cheng Kung University.' },
+    { id:'zagreb',    city:'Zagreb',     country:'Croatia',   lon:16.00,  lat:45.80,  yr:'2022',     note:'Exchange semester, University of Zagreb.' },
+    { id:'taipei',    city:'Taipei',     country:'Taiwan',    lon:121.50, lat:25.00,  yr:'2023–24',  note:'Fidelity International — Strategic Planning Intern.' },
+    { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'Exchange semester, Singapore Management University.' },
+    { id:'melbourne', city:'Melbourne',  country:'Australia', lon:144.96, lat:-37.81, yr:'2025',     note:'Moomoo Australia — 100+ clients across 15+ nationalities.' },
+    { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', note:'Waiwin — 400 to 5,000 registered users in three months.' },
+    { id:'berlin',    city:'Berlin',     country:'Germany',   lon:13.40,  lat:52.52,  yr:'2025–now', note:'Finoa, Ultima Markets, ESMT Berlin.', now:true },
+    { id:'helsinki',  city:'Helsinki',   country:'Finland',   lon:24.94,  lat:60.17,  yr:'2027',     note:'Aalto University School of Business — exchange semester.', future:true }
   ];
 
   var arcsG = document.getElementById('arcs');
