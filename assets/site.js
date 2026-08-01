@@ -234,6 +234,28 @@
   }
 
 
+
+  /* ── email, assembled at runtime ─────────────────────── */
+  /* The address never appears as a contiguous string in the served HTML, so a
+     scraper reading the static file finds nothing; a real visitor gets a
+     normal mailto link. Costs nothing if JS is off — the row just reads
+     "Show address" and the other channels still work. */
+  var mailRow = $('#mailRow');
+  if (mailRow) {
+    var addr = mailRow.dataset.u + String.fromCharCode(64) + mailRow.dataset.d;
+    mailRow.setAttribute('href', 'mailto:' + addr);
+    var mt = $('#mailText');
+    if (mt) mt.textContent = addr;
+    var cb = $('#copyEmail');
+    if (cb) {
+      cb.dataset.copy = addr;
+      cb.addEventListener('click', function (ev) {
+        ev.preventDefault();          /* do not follow the mailto */
+        ev.stopPropagation();
+      });
+    }
+  }
+
   /* ── copy-to-clipboard ───────────────────────────────── */
   var copyBtn = $('#copyEmail');
   if (copyBtn) {
