@@ -172,15 +172,15 @@ body.menu-open #menu a:nth-child(5) { transition-delay: .36s; }
 .flowfield {
   content-visibility: auto;
   position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
-  -webkit-mask-image: linear-gradient(180deg, transparent 70%, #000 84%, #000 97%, transparent);
-  mask-image: linear-gradient(180deg, transparent 70%, #000 84%, #000 97%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent 58%, #000 74%, #000 88%, transparent 97%);
+  mask-image: linear-gradient(180deg, transparent 58%, #000 74%, #000 88%, transparent 97%);
 }
 /* Every child except the canvas must sit above it. Matching only ".wrap"
    missed <header class="hero">, which let the canvas paint over the text. */
 .flowwrap > :not(.flowfield) { position: relative; z-index: 1; }
 
 /* ── hero ────────────────────────────────────────────── */
-header.hero { padding: clamp(3.5rem, 10vh, 6rem) 0 clamp(4.5rem, 11vh, 7.5rem); border-bottom: 1px solid var(--rule); }
+header.hero { padding: clamp(3.5rem, 10vh, 6rem) 0 clamp(7rem, 15vh, 10.5rem); border-bottom: 1px solid var(--rule); }
 .hero-eyebrow { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.7rem; }
 .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; animation: pulse 2.6s ease-out infinite; }
 @keyframes pulse {
@@ -384,15 +384,15 @@ footer a:hover { color: var(--accent); }
 .map-title em { font-style: normal; color: var(--accent); }
 
 .map-layout { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
-.map-box { position: relative; width: 100%; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 0.4rem; overflow: hidden; }
+.map-box { position: relative; width: 100%; max-width: 38rem; margin: 0 auto; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 0.4rem; overflow: hidden; }
 .map-box svg { display: block; width: 100%; height: auto; }
 
 .dot-land { fill: var(--land); }
-.arc { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; opacity: 0.3; transition: opacity .3s ease; }
+.arc { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; opacity: 0.3; transition: opacity .3s ease; }
 .arc.dim { opacity: 0.1; }
 .arc.hot { opacity: 0.8; }
 .arc-flow {
-  fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round;
+  fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round;
   stroke-dasharray: 3.5 20; opacity: 0.9; animation: dashflow 2.6s linear infinite; transition: opacity .3s ease;
 }
 .arc-flow.dim { opacity: 0.18; }
@@ -405,17 +405,17 @@ footer a:hover { color: var(--accent); }
 .node .core { fill: var(--accent); transition: r .3s cubic-bezier(.34,1.56,.64,1); }
 .node .hit { fill: transparent; }
 .node:hover .halo, .node.on .halo { opacity: 0.22; }
-.node:hover .core, .node.on .core { r: 12; }
+.node:hover .core, .node.on .core { r: 17; }
 .node:focus { outline: none; }
 .node:focus-visible .halo { opacity: 0.3; }
 .node.now .ring { opacity: 0.7; animation: sonar 2.8s ease-out infinite; }
-@keyframes sonar { 0% { r: 9; opacity: .65; } 100% { r: 34; opacity: 0; } }
+@keyframes sonar { 0% { r: 14; opacity: .65; } 100% { r: 46; opacity: 0; } }
 
 .node-label {
-  font-family: var(--mono); font-size: 15px; letter-spacing: 0.06em;
-  text-transform: uppercase; fill: var(--ink-3); opacity: 0;
-  transition: opacity .25s ease; pointer-events: none;
-  paint-order: stroke fill; stroke: var(--paper-2); stroke-width: 4px;
+  font-family: var(--mono); font-size: 26px; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; fill: var(--ink-2); opacity: .75;
+  transition: opacity .25s ease, fill .25s ease; pointer-events: none;
+  paint-order: stroke fill; stroke: var(--paper); stroke-width: 7px;
   stroke-linejoin: round;
 }
 .node:hover .node-label, .node.on .node-label { opacity: 1; fill: var(--ink); }
@@ -531,27 +531,28 @@ body.glow-on #glow { opacity: 1; }
 @media (hover: none) { #glow { display: none; } }
 
 /* Real logos carry their own shape — no tile, no border, no background.
-   Height is fixed and width is free, so square marks stay square and wide
-   wordmarks (Fidelity 3.2:1, NCKU 3.0:1) render at their natural width
-   instead of being crushed into a square box. Only the monogram fallback
-   (UM, WW) keeps the bordered tile. */
+   The image is capped by max-height/max-width and never clipped: the old rule
+   relied on overflow:hidden on a fixed square, which cropped wide marks. */
 .logo.has-img {
   width: auto;
+  height: auto;
   min-width: 0;
-  height: 1.75rem;
-  max-width: 7.5rem;
+  max-width: 7rem;
+  overflow: visible;
   background: none;
   border: none;
   border-radius: 0;
+  display: inline-flex;
+  align-items: center;
 }
 .logo.has-img img {
+  display: block;
   width: auto;
-  height: 100%;
-  max-width: 100%;
+  height: auto;
+  max-height: 1.75rem;
+  max-width: 7rem;
   padding: 0;
   object-fit: contain;
-  object-position: left center;
-  image-rendering: -webkit-optimize-contrast;   /* crisper downscale for raster marks */
 }
 .job:hover .logo.has-img, .lrow:hover .logo.has-img {
   background: none; border-color: transparent;
@@ -596,5 +597,6 @@ body.glow-on #glow { opacity: 1; }
 .soc svg { width: 1.15rem; height: 1.15rem; display: block; }
 .soc:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
 .soc:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.soc--fill { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-.soc--fill:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--paper); }
+/* both buttons share one treatment — a lone outlined sibling read as unfinished */
+.soc { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.soc:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--paper); transform: translateY(-2px); }

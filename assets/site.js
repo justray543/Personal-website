@@ -375,11 +375,11 @@
       p.len  = W * (0.45 + Math.random() * 0.85);
       p.sp   = 3.0 + Math.random() * 7.5;           /* fast — light-speed streak */
       p.w    = 11 + Math.random() * 34;            /* wide soft band */
-      p.a    = 0.30 + Math.random() * 0.55;
+      p.a    = 0.22 + Math.random() * 0.42;
       p.core = Math.random() < 0.55;               /* only some get a hot core */
       p.push = 0;
       /* keep them in the lower band, beneath the text block */
-      p.y    = H * (0.78 + Math.random() * 0.20);
+      p.y    = H * (0.70 + Math.random() * 0.26);
       p.x    = offscreen ? -p.len - Math.random() * 200 : Math.random() * (W + p.len) - p.len;
     }
 
@@ -388,7 +388,7 @@
       W = r.width; H = r.height;
       cv.width = W * dpr; cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.min(18, Math.max(7, Math.round(W / 120)));
+      var n = Math.min(13, Math.max(6, Math.round(W / 165)));
       bands = [];
       for (var i = 0; i < n; i++) { var p = {}; seed(p); bands.push(p); }
     }

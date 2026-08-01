@@ -82,12 +82,12 @@
 
   /* ── the journey ─────────────────────────────────────── */
   var PLACES = [
-    { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24',  note:'BBA at National Cheng Kung University. Where it starts.' },
+    { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24', lside:'left', note:'BBA at National Cheng Kung University. Where it starts.' },
     { id:'zagreb',    city:'Zagreb',     country:'Croatia',   lon:16.00,  lat:45.80,  yr:'2022',     note:'Exchange semester, University of Zagreb. First time in Europe.' },
     { id:'taipei',    city:'Taipei',     country:'Taiwan',    lon:121.50, lat:25.00,  yr:'2023–24',  note:'Fidelity International, strategic planning. How a global asset manager actually runs.' },
     { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'Exchange at Singapore Management University. Asia’s financial centre, up close.' },
     { id:'melbourne', city:'Melbourne',  country:'Australia', lon:144.96, lat:-37.81, yr:'2025',     note:'Moomoo Australia. 100+ clients across 15+ nationalities, sold face to face.' },
-    { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025',     note:'Waiwin, payments for travellers. 400 to 5,000 users in three months.' },
+    { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', note:'Waiwin, payments for travellers. 400 to 5,000 users in three months.' },
     { id:'berlin',    city:'Berlin',     country:'Germany',   lon:13.40,  lat:52.52,  yr:'2025–now', note:'Finoa, Ultima Markets, ESMT Berlin. Where the thesis gets tested.', now:true },
     { id:'helsinki',  city:'Helsinki',   country:'Finland',   lon:24.94,  lat:60.17,  yr:'2027',     note:'Aalto University School of Business exchange. Next.', future:true }
   ];
@@ -138,14 +138,14 @@
     var x = px(p.lon), y = py(p.lat);
     var g = el('g', { class: 'node' + (p.now ? ' now' : ''), tabindex: '0', role: 'button' });
     g.setAttribute('aria-label', p.city + ', ' + p.country + ', ' + p.yr);
-    g.appendChild(el('circle', { cx: x, cy: y, r: 22, class: 'halo' }));
-    if (p.now) g.appendChild(el('circle', { cx: x, cy: y, r: 9, class: 'ring' }));
-    g.appendChild(el('circle', { cx: x, cy: y, r: p.now ? 10 : 7.5, class: 'core' }));
-    var right = x < W - 150;
-    var lbl = el('text', { x: right ? x + 18 : x - 18, y: y + 5, class: 'node-label', 'text-anchor': right ? 'start' : 'end' });
+    g.appendChild(el('circle', { cx: x, cy: y, r: 30, class: 'halo' }));
+    if (p.now) g.appendChild(el('circle', { cx: x, cy: y, r: 13, class: 'ring' }));
+    g.appendChild(el('circle', { cx: x, cy: y, r: p.now ? 15 : 11, class: 'core' }));
+    var right = p.lside === 'left' ? false : x < W - 150;
+    var lbl = el('text', { x: right ? x + 23 : x - 23, y: y + 6, class: 'node-label', 'text-anchor': right ? 'start' : 'end' });
     lbl.textContent = p.city;
     g.appendChild(lbl);
-    g.appendChild(el('circle', { cx: x, cy: y, r: 28, class: 'hit' }));
+    g.appendChild(el('circle', { cx: x, cy: y, r: 34, class: 'hit' }));
     nodesG.appendChild(g);
     nodeEls[p.id] = g;
   });
@@ -206,7 +206,7 @@
 
   /* ── travelling packet along the whole corridor ──────── */
   if (!reduce && arcs.length) {
-    var flyer = el('circle', { r: 3.4, class: 'flyer' });
+    var flyer = el('circle', { r: 4.5, class: 'flyer' });
     arcsG.appendChild(flyer);
     var seg = 0, t = 0, live = true;
 
