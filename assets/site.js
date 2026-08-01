@@ -14,7 +14,8 @@
   var root = document.documentElement;
   var saved = null;
   try { saved = localStorage.getItem('theme'); } catch (e) {}
-  if (saved) root.setAttribute('data-theme', saved);
+  /* Dark is the site's default. A returning visitor's own choice still wins. */
+  root.setAttribute('data-theme', saved || 'dark');
 
   var themeBtn = $('#themeBtn');
   if (themeBtn) {
