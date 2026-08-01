@@ -531,9 +531,28 @@ body.glow-on #glow { opacity: 1; }
 @media (hover: none) { #glow { display: none; } }
 
 /* Real logos carry their own shape — no tile, no border, no background.
-   Only the monogram fallback (UM, WW) keeps the bordered tile. */
-.logo.has-img { background: none; border: none; border-radius: 0; }
-.logo.has-img img { padding: 0; }
+   Height is fixed and width is free, so square marks stay square and wide
+   wordmarks (Fidelity 3.2:1, NCKU 3.0:1) render at their natural width
+   instead of being crushed into a square box. Only the monogram fallback
+   (UM, WW) keeps the bordered tile. */
+.logo.has-img {
+  width: auto;
+  min-width: 0;
+  height: 1.75rem;
+  max-width: 7.5rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.logo.has-img img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  padding: 0;
+  object-fit: contain;
+  object-position: left center;
+  image-rendering: -webkit-optimize-contrast;   /* crisper downscale for raster marks */
+}
 .job:hover .logo.has-img, .lrow:hover .logo.has-img {
   background: none; border-color: transparent;
 }
@@ -563,3 +582,19 @@ body.glow-on #glow { opacity: 1; }
 /* headings that resolve on hover/tap — stop the cipher glyphs reflowing the line */
 .decryptable { font-variant-numeric: tabular-nums; }
 @media (hover: hover) { .decryptable { cursor: default; } }
+
+/* ── social buttons ──────────────────────────────────── */
+.social { display: flex; gap: 0.6rem; align-items: center; }
+.social--contact { margin: 0 0 1.2rem; }
+.soc {
+  width: 2.75rem; height: 2.75rem; flex: none;   /* 44px — full touch target */
+  border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--rule); background: transparent; color: var(--ink-2);
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1);
+}
+.soc svg { width: 1.15rem; height: 1.15rem; display: block; }
+.soc:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+.soc:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.soc--fill { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.soc--fill:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--paper); }
