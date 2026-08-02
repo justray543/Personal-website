@@ -89,7 +89,7 @@
     { id:'melbourne', city:'Melbourne',  country:'Australia', lon:144.96, lat:-37.81, yr:'2025',     note:'Moomoo Australia — 100+ clients across 15+ nationalities.' },
     { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', ldy:8, note:'Waiwin — 400 to 5,000 registered users in three months.' },
     { id:'berlin',    city:'Berlin',     country:'Germany',   lon:13.40,  lat:52.52,  yr:'2025–now', note:'Finoa, Ultima Markets, ESMT Berlin.', now:true },
-    { id:'helsinki',  city:'Helsinki',   country:'Finland',   lon:24.94,  lat:60.17,  yr:'2027',     note:'Aalto University School of Business — exchange semester.', future:true }
+    { id:'helsinki',  city:'Helsinki',   country:'Finland',   lon:24.94,  lat:60.17,  yr:'2027',     note:'Aalto University — exchange semester.', future:true }
   ];
 
   var arcsG = document.getElementById('arcs');
