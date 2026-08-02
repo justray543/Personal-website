@@ -84,9 +84,8 @@
   var PLACES = [
     { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24', lside:'left', ldy:22, note:'BBA, National Cheng Kung University.' },
     { id:'zagreb',    city:'Zagreb',     country:'Croatia',   lon:16.00,  lat:45.80,  yr:'2022',     note:'Exchange semester, University of Zagreb.' },
-    { id:'hongkong',  city:'Hong Kong',  country:'Hong Kong', lon:114.17, lat:22.32,  yr:'2022', lside:'left', ldy:-20, note:'Summer school, The Hong Kong Polytechnic University.' },
     { id:'taipei',    city:'Taipei',     country:'Taiwan',    lon:121.50, lat:25.00,  yr:'2023–24',  note:'Fidelity International — Strategic Planning Intern.' },
-    { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'NCKU–SMU joint workshop, Singapore Management University.' },
+    { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'NCKU–SMU joint semester programme at Singapore Management University. Three months, reciprocal campus exchange.' },
     { id:'melbourne', city:'Melbourne',  country:'Australia', lon:144.96, lat:-37.81, yr:'2025',     note:'Moomoo Australia — 100+ clients across 15+ nationalities.' },
     { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', ldy:8, note:'Waiwin — 400 to 5,000 registered users in three months.' },
     { id:'berlin',    city:'Berlin',     country:'Germany',   lon:13.40,  lat:52.52,  yr:'2025–now', note:'Finoa, Ultima Markets, ESMT Berlin.', now:true },
