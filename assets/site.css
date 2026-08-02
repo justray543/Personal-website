@@ -198,13 +198,13 @@ h1 em { font-style: normal; color: var(--accent); }
 .ready .ln:nth-child(2) > span { transition-delay: .08s; }
 .ready .ln:nth-child(3) > span { transition-delay: .16s; }
 
-.hero-lede { color: var(--ink-2); margin: 0; font-size: 1rem; line-height: 1.65; max-width: 52ch; }
-.hero-role {
-  font-family: var(--head); font-weight: 600;
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  letter-spacing: -0.015em; text-transform: none;
-  color: var(--ink); margin: 0 0 1rem;
+.hero-lede { color: var(--ink-2); margin: 0; font-size: 1.05rem; line-height: 1.6; max-width: 44ch; }
+/* Eyebrow above the name: prominence from position, not size. */
+.hero-eyebrow-line {
+  font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ink-2);
+  margin: 0 0 0.9rem;
 }
+.hero-eyebrow-line b { color: var(--accent); font-weight: 500; }
 .hero-role b { color: var(--accent); font-weight: 500; }
 
 .links { display: flex; flex-wrap: wrap; gap: 1.3rem; margin-top: 1.5rem; align-items: center; }
