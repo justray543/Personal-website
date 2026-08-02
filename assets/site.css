@@ -391,10 +391,20 @@ footer a:hover { color: var(--accent); }
 .map-title em { font-style: normal; color: var(--accent); }
 
 .map-layout { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
-.map-box { position: relative; width: 100%; max-width: 38rem; margin: 0 auto; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 0.4rem; overflow: hidden; }
+/* No panel: the dot field sits directly on the page and fades at the edges,
+   so the map reads as background texture rather than a card. */
+.map-box {
+  position: relative; width: 100%; max-width: 38rem; margin: 0 auto;
+  background: none; border: none; border-radius: 0; padding: 0;
+  overflow: visible;
+}
+#worldmap {
+  -webkit-mask-image: radial-gradient(125% 115% at 50% 50%, #000 58%, transparent 94%);
+  mask-image: radial-gradient(125% 115% at 50% 50%, #000 58%, transparent 94%);
+}
 .map-box svg { display: block; width: 100%; height: auto; }
 
-.dot-land { fill: var(--land); }
+.dot-land { fill: var(--land); opacity: .62; }
 .arc { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; opacity: 0.3; transition: opacity .3s ease; }
 .arc.dim { opacity: 0.1; }
 .arc.hot { opacity: 0.8; }
@@ -422,7 +432,7 @@ footer a:hover { color: var(--accent); }
   font-family: var(--mono); font-size: 26px; font-weight: 500; letter-spacing: 0.04em;
   text-transform: uppercase; fill: var(--ink-2); opacity: .75;
   transition: opacity .25s ease, fill .25s ease; pointer-events: none;
-  paint-order: stroke fill; stroke: var(--paper-2); stroke-width: 7px;
+  paint-order: stroke fill; stroke: var(--paper); stroke-width: 7px;
   stroke-linejoin: round;
 }
 .node:hover .node-label, .node.on .node-label { opacity: 1; fill: var(--ink); }
@@ -572,9 +582,8 @@ body.glow-on #glow { opacity: 1; }
   .node .core { filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 75%, transparent)); }
   .node.now .core { filter: drop-shadow(0 0 9px color-mix(in srgb, var(--accent) 90%, transparent)); }
   .flyer { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 85%, transparent)); }
-  .map-box { background: #070809; }
 }
-:root[data-theme="dark"] .dot-land { fill: var(--land); opacity: .85; }
+:root[data-theme="dark"] .dot-land { fill: var(--land); opacity: .6; }
 :root[data-theme="dark"] .arc { opacity: .38; }
 :root[data-theme="dark"] .node .core {
   filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 75%, transparent));
@@ -585,7 +594,6 @@ body.glow-on #glow { opacity: 1; }
 :root[data-theme="dark"] .flyer {
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 85%, transparent));
 }
-:root[data-theme="dark"] .map-box { background: #070809; }
 
 /* headings that resolve on hover/tap — stop the cipher glyphs reflowing the line */
 .decryptable { font-variant-numeric: tabular-nums; }
@@ -624,12 +632,11 @@ body.glow-on #glow { opacity: 1; }
 /* ── explicit light theme must beat the OS dark media query ──────────── */
 /* Without these, a user on a dark-OS machine who toggles the site to light
    keeps the dark map treatment, because the media query still matches. */
-:root[data-theme="light"] .dot-land { fill: var(--land); opacity: 1; }
+:root[data-theme="light"] .dot-land { fill: var(--land); opacity: .7; }
 :root[data-theme="light"] .arc { opacity: .3; }
 :root[data-theme="light"] .node .core,
 :root[data-theme="light"] .node.now .core,
 :root[data-theme="light"] .flyer { filter: none; }
-:root[data-theme="light"] .map-box { background: var(--paper-2); }
 
 /* ── hero status line ────────────────────────────────── */
 /* The three facts a recruiter screens on, kept in the first viewport. */
