@@ -82,12 +82,13 @@
 
   /* ── the journey ─────────────────────────────────────── */
   var PLACES = [
-    { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24', lside:'left', note:'BBA, National Cheng Kung University.' },
+    { id:'tainan',    city:'Tainan',     country:'Taiwan',    lon:120.20, lat:23.00,  yr:'2021–24', lside:'left', ldy:22, note:'BBA, National Cheng Kung University.' },
     { id:'zagreb',    city:'Zagreb',     country:'Croatia',   lon:16.00,  lat:45.80,  yr:'2022',     note:'Exchange semester, University of Zagreb.' },
+    { id:'hongkong',  city:'Hong Kong',  country:'Hong Kong', lon:114.17, lat:22.32,  yr:'2022', lside:'left', ldy:-20, note:'Summer school, The Hong Kong Polytechnic University.' },
     { id:'taipei',    city:'Taipei',     country:'Taiwan',    lon:121.50, lat:25.00,  yr:'2023–24',  note:'Fidelity International — Strategic Planning Intern.' },
-    { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'Exchange semester, Singapore Management University.' },
+    { id:'singapore', city:'Singapore',  country:'Singapore', lon:103.80, lat:1.35,   yr:'2024',     note:'NCKU–SMU joint workshop, Singapore Management University.' },
     { id:'melbourne', city:'Melbourne',  country:'Australia', lon:144.96, lat:-37.81, yr:'2025',     note:'Moomoo Australia — 100+ clients across 15+ nationalities.' },
-    { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', note:'Waiwin — 400 to 5,000 registered users in three months.' },
+    { id:'chiangmai', city:'Chiang Mai', country:'Thailand',  lon:98.98,  lat:18.79,  yr:'2025', lside:'left', ldy:8, note:'Waiwin — 400 to 5,000 registered users in three months.' },
     { id:'berlin',    city:'Berlin',     country:'Germany',   lon:13.40,  lat:52.52,  yr:'2025–now', note:'Finoa, Ultima Markets, ESMT Berlin.', now:true },
     { id:'helsinki',  city:'Helsinki',   country:'Finland',   lon:24.94,  lat:60.17,  yr:'2027',     note:'Aalto University School of Business — exchange semester.', future:true }
   ];
@@ -142,7 +143,7 @@
     if (p.now) g.appendChild(el('circle', { cx: x, cy: y, r: 13, class: 'ring' }));
     g.appendChild(el('circle', { cx: x, cy: y, r: p.now ? 15 : 11, class: 'core' }));
     var right = p.lside === 'left' ? false : x < W - 150;
-    var lbl = el('text', { x: right ? x + 23 : x - 23, y: y + 6, class: 'node-label', 'text-anchor': right ? 'start' : 'end' });
+    var lbl = el('text', { x: right ? x + 23 : x - 23, y: y + 6 + (p.ldy || 0), class: 'node-label', 'text-anchor': right ? 'start' : 'end' });
     lbl.textContent = p.city;
     g.appendChild(lbl);
     g.appendChild(el('circle', { cx: x, cy: y, r: 34, class: 'hit' }));
